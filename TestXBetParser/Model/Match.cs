@@ -4,16 +4,17 @@ namespace TestXBetParser.Model
 {
     public class Match
     {
-        public Match(Team firstTeam, Team secondTeam)
+        public Match(/*Team firstTeam, Team secondTeam*/)
         {
-            Id = Guid.NewGuid();
-            FirstTeam = firstTeam;
-            SecondTeam = secondTeam;
+            //Id = Guid.NewGuid();
+            //FirstTeam = firstTeam;
+            //SecondTeam = secondTeam;
             Score = new int[] { 0, 0 };
         }
         public Guid Id { get; set; }
-        public Team FirstTeam { get; }
-        public Team SecondTeam { get; }
+        public int LigaId { get; set; }
+        public Team FirstTeam { get; set;  }
+        public Team SecondTeam { get; set;  }
         public string Url { get; set; }
         public int[] Score { get; set; }
         public DateTime MatchTime { get; set; }

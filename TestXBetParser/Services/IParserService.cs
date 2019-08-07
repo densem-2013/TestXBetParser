@@ -8,5 +8,7 @@ namespace TestXBetParser.Services
     {
         Task ParseMatchesData();
         void PrintData();
+        Task SeleniumParse();
+        Task HtmlAgilityPackParse();
     }
 }

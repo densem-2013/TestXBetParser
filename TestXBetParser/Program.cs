@@ -20,12 +20,9 @@ namespace TestXBetParser
 
             var parserService = ServiceProvider.GetRequiredService<IParserService>();
 
-            var data = await parserService.ParseMatchesData();
+            await parserService.SeleniumParse();
 
-            if (data==null )
-                throw new ArgumentNullException(nameof(data));
-
-            parserService.PrintData();
+          // parserService.PrintData();
             
         }
 
