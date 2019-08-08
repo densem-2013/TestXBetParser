@@ -4,9 +4,9 @@ namespace TestXBetParser.Model
 {
     public class RateData
     {
-        public float FirstTeamWinRate { get; set; }
-        public float SecondTeamWinRate { get; set; }
-        public float DrawRate { get; set; }
+        public string FirstTeamWinRate { get; set; }
+        public string SecondTeamWinRate { get; set; }
+        public string DrawRate { get; set; }
         public void Print()
         {
             Console.WriteLine($"FirstTeamWinRate = {FirstTeamWinRate}");

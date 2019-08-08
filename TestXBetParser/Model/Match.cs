@@ -4,25 +4,21 @@ namespace TestXBetParser.Model
 {
     public class Match
     {
-        public Match(/*Team firstTeam, Team secondTeam*/)
+        public Match()
         {
-            //Id = Guid.NewGuid();
-            //FirstTeam = firstTeam;
-            //SecondTeam = secondTeam;
             Score = new int[] { 0, 0 };
         }
-        public Guid Id { get; set; }
-        public int LigaId { get; set; }
-        public Team FirstTeam { get; set;  }
-        public Team SecondTeam { get; set;  }
+        public int Id { get; set; }
+        public string LigaId { get; set; }
+        public Team FirstTeam { get; set; }
+        public Team SecondTeam { get; set; }
         public string Url { get; set; }
         public int[] Score { get; set; }
-        public DateTime MatchTime { get; set; }
+        public string MatchTime { get; set; }
         public RateData RateData { get; set; }
 
         public void Print()
         {
-
             Console.WriteLine($"Match Id = {Id}");
 
             Console.WriteLine($"Match Url = {Url}");
@@ -31,17 +27,17 @@ namespace TestXBetParser.Model
 
             Console.WriteLine($"Match Score: {Score[0]}:{Score[1]}");
 
-            Console.WriteLine($"Match Time = {MatchTime:dddd:MM:yy:HH:mm}");
+            Console.WriteLine($"Match Time = {MatchTime}");
 
-            Console.WriteLine(new string('*', 20));
+            Console.WriteLine();
         }
         public void PrintRates()
         {
+            Console.WriteLine($"RateData for match {FirstTeam.TeamName}-{SecondTeam.TeamName} : ");
+
             Console.WriteLine(new string('*', 20));
 
-            Console.WriteLine($"MatchId = {Id}");
-
-            RateData.Print();
+            RateData?.Print();
         }
     }
 }

@@ -4,10 +4,9 @@ namespace TestXBetParser.Model
 {
     public class Team
     {
-        public Team(string teamName)
+        public Team()
         {
             Id = Guid.NewGuid();
-            TeamName = teamName;
         }
         public Guid Id { get; set; }
         public string TeamName { get; set; }

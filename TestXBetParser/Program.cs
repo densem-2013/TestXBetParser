@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Threading.Tasks;
 using TestXBetParser.Services;
 
 namespace TestXBetParser
@@ -8,7 +7,7 @@ namespace TestXBetParser
     class Program
     {
         private static IServiceProvider ServiceProvider { get; set; }
-        static async Task Main(string[] args)
+        static void Main(string[] args)
         {
             AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);
 
@@ -20,10 +19,35 @@ namespace TestXBetParser
 
             var parserService = ServiceProvider.GetRequiredService<IParserService>();
 
-            await parserService.SeleniumParse();
+            parserService.SeleniumParse();
 
-          // parserService.PrintData();
-            
+            parserService.PrintData();
+
+            var input = "";
+
+            Console.WriteLine("Enter MatchId to get its RateData or enter 'c'(or Ctrl+c) to exit :");
+
+            while ((input = Console.ReadLine()) != "c")
+            {
+                if (int.TryParse(input, out var id))
+                {
+                    var match = parserService.GetMatchById(id);
+
+                    if (match != null)
+                    {
+
+                        match.PrintRates();
+                    }
+                    else
+                    {
+                        Console.WriteLine("Match with Id = {id} not exist in parsed data!");
+                    }
+                }
+
+                Console.WriteLine("Enter MatchId to get its RateData or enter 'c'(or Ctrl+c) to exit :");
+            }
+
+            Console.WriteLine("Enter 'c'(or Ctrl+c) to exit");
         }
 
         static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
